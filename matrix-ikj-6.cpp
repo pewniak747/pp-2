@@ -24,10 +24,10 @@ void initialize() {
 void multiply_ikj_6() {
   //#pragma omp parallel for
   for (int i = 0 ; i < ROWS ; i+=BLOCK)
-    for (int i2 = i; i2<std::min(ROWS, i + BLOCK - 1); i2++)
-      for (int k = 0 ; k < COLUMNS ; k+=BLOCK)
-        for (int k2 = k; k2<std::min(COLUMNS, k + BLOCK - 1); k2++)
-          for (int j = 0 ; j < COLUMNS ; j+=BLOCK)
+    for (int k = 0 ; k < COLUMNS ; k+=BLOCK)
+      for (int j = 0 ; j < COLUMNS ; j+=BLOCK)
+        for (int i2 = i; i2<std::min(ROWS, i + BLOCK - 1); i2++)
+          for (int k2 = k; k2<std::min(COLUMNS, k + BLOCK - 1); k2++)
             for (int j2 = j; j2<std::min(COLUMNS, j + BLOCK - 1); j2++)
               matrix_r[i2][j2] += matrix_a[i2][k2] * matrix_b[k2][j2] ;
 }
